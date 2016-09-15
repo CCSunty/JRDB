@@ -357,6 +357,7 @@
 					5ACBEEAC1CE1B3A500371E01 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = FJ535WN7FW;
+						LastSwiftMigration = 0800;
 					};
 					5ACBEEC51CE1B3A500371E01 = {
 						CreatedOnToolsVersion = 7.3;
@@ -652,6 +653,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JRDB/JRDB-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -670,6 +672,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jrwong.abc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JRDB/JRDB-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
