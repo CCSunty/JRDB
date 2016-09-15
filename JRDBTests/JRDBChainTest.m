@@ -71,6 +71,8 @@
 }
 
 #pragma mark - Delete
+
+#ifdef aaa
 - (void)testZZZDeleteAll {
     [self testSaveMany];
     BOOL a = J_DeleteAll(Person).Recursive(YES).updateResult;
@@ -125,7 +127,12 @@
 //    [J_DELETE(array).Recursive(YES) exe:nil];
 }
 
+- (void)testZZZZZDeleteDatabase {
+    [[JRDBMgr shareInstance] deleteDatabaseWithPath:[JRDBMgr defaultDB].databasePath];
+}
 
+
+#endif /* aaa */
 
 #pragma mark - Insert
 
@@ -243,11 +250,11 @@
 }
 
 - (void)testUpdateMany1 {
-    NSArray<Person *> *ps = [Person jr_findAll];
+    NSArray<Person *> *ps = [Person jr_getAll];
     [ps enumerateObjectsUsingBlock:^(Person * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj.c_long = 9999;
     }];
-    BOOL a = J_Update(ps).Recursive(NO).updateResult;
+    BOOL a = J_Update(ps).updateResult;
     NSAssert(a, @"~~ error: %s", __FUNCTION__);
 //    [J_UPDATE(ps).Recursive(NO) exe:nil];
 }
@@ -454,6 +461,21 @@
     NSLog(@"%@", p);
 }
 
+- (void)testSubQuery {
+    NSUInteger count =
+//    J_SelectColumns(J(a_int), J(e_unsigned_long))
+//    J_Select(Person)
+    J_SelectCount(Person)
+    .From(J_Select(Person).Limit(0,5))
+    .OrderJ(e_unsigned_long).Recursively.Descend.count;
+    NSLog(@"%@", @(count));
+    
+    J_Select(Person).WhereJ(a_int = ?).ParamsJ(@10).list;
+    
+    
+    
+}
+
 - (void)testGCD {
 //    [JRDBMgr shareInstance].debugMode = NO;
     
@@ -501,26 +523,30 @@
 //    sleep(5);
 }
 
+#define J_Chain(_arg_) ([JRDBChain<_arg_ *> new])
+
 - (void)testTemp {
-    Person *p = [self createPerson:1 name:nil];
-    [J_Insert(p) exe:^(JRDBChain * _Nonnull chain, id  _Nullable result) {
-        NSLog(@"%@", result);
+    
+    [[JRDBChain new] exe:^(JRDBChain * _Nonnull chain, id  _Nullable result) {
+        
     }];
-    NSLog(@"end");
     
-    J_SelectColumns(nil);
     
-    [Person jr_findAll]
+    [[JRDBChain new] inTransaction:^(FMDatabase * _Nonnull $0, BOOL * _Nonnull $1) {
+        
+    }];
     
-//    NSLog(@"%@", pppp);
+    [J_Chain(Person) inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+        
+    }];
     
+    [[JRDBChain new].db jr_inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollBack) {
+        
+    }];
+
 }
 
 #pragma mark - database operation
-
-- (void)testZZZZZDeleteDatabase {
-    [[JRDBMgr shareInstance] deleteDatabaseWithPath:[JRDBMgr defaultDB].databasePath];
-}
 
 #pragma mark - convenience method
 
