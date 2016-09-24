@@ -44,25 +44,28 @@ class PPP: AAA {
     var ccc1: CCC?
     
     var ppp: PPP?
-    
-//    override static func jr_singleLinkedPropertyNames() -> [String : AnyObject.Type]? {
-//        return [
-//            "ccc" : CCC.self,
-//            "ccc1" : CCC.self,
-//            "ppp" : PPP.self,
-//        ]
-//    }
+
+
+    override static func jr_singleLinkedPropertyNames() -> [String : JRPersistent.Type]? {
+        return [
+            "ccc" : CCC.self,
+            "ccc1" : CCC.self,
+            "ppp" : PPP.self,
+        ]
+    }
+
 }
 
 class CCC: NSObject {
     var serialNumber: String = ""
     weak var ppp: PPP?
-    
-//    override static func jr_singleLinkedPropertyNames() -> [String : AnyObject.Type]? {
-//        return [
-//            "ppp" : PPP.self,
-//        ]
-//    }
+
+    override static func jr_singleLinkedPropertyNames() -> [String : JRPersistent.Type]? {
+        return [
+            "ppp" : PPP.self,
+        ]
+    }
+
 
     deinit {
         print("\(self) deinit")
