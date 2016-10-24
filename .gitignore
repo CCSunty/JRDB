@@ -1,6 +1,7 @@
 
 *.xcuserstate
 
+<<<<<<< HEAD
 *.xcworkspace/xcuserdata
 
 *.xcworkspace/contents.xcworkspacedata
@@ -8,3 +9,19 @@
 Pods/*
 
 Podfile.lock
+=======
+*/xcuserdata
+
+*.xcscheme
+
+Pods/**
+
+*.xcworkspace/contents.xcworkspacedata
+
+Podfile.lock
+
+.DS_Store
+
+
+
+>>>>>>> master

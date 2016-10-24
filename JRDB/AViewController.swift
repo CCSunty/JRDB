@@ -44,6 +44,7 @@ class PPP: AAA {
     var ccc1: CCC?
     
     var ppp: PPP?
+<<<<<<< HEAD
 
 
     override static func jr_singleLinkedPropertyNames() -> [String : JRPersistent.Type]? {
@@ -54,11 +55,22 @@ class PPP: AAA {
         ]
     }
 
+=======
+    
+//    override static func jr_singleLinkedPropertyNames() -> [String : AnyObject.Type]? {
+//        return [
+//            "ccc" : CCC.self,
+//            "ccc1" : CCC.self,
+//            "ppp" : PPP.self,
+//        ]
+//    }
+>>>>>>> master
 }
 
 class CCC: NSObject {
     var serialNumber: String = ""
     weak var ppp: PPP?
+<<<<<<< HEAD
 
     override static func jr_singleLinkedPropertyNames() -> [String : JRPersistent.Type]? {
         return [
@@ -67,12 +79,22 @@ class CCC: NSObject {
     }
 
 
+=======
+    
+//    override static func jr_singleLinkedPropertyNames() -> [String : AnyObject.Type]? {
+//        return [
+//            "ppp" : PPP.self,
+//        ]
+//    }
+    
+>>>>>>> master
     deinit {
         print("\(self) deinit")
     }
 }
 
 class AViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let db = JRDBMgr.shareInstance().createDB(withPath: "/Users/mac/Desktop/test.sqlite")
