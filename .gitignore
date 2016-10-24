@@ -1,10 +1,10 @@
 
 *.xcuserstate
 
-JRDB.xcworkspace/xcuserdata/jmacmini.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcworkspace/xcuserdata
 
-JRDB.xcworkspace/xcuserdata/jmacmini.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcworkspace/contents.xcworkspacedata
 
-*.xcuserstate
+Pods/*
 
-*.xcscheme
+Podfile.lock
